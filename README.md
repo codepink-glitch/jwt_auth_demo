@@ -15,7 +15,15 @@
     password: "String"
 }
 
-[пример запроса](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/generated-snippets/registration/http-request.adoc)
+пример: 
+```
+POST /registration HTTP/1.1
+Content-Type: application/json
+Content-Length: 57
+Host: localhost:8080
+
+{"username":"randomUsername","password":"randomPassword"}
+```
 
 Регистрирует пользователя и возвращает данные зарегистрированного пользователя
 (в случае, если пользователь с таким именем уже зарегистрирован, возвращается страница с 403 кодом):
@@ -25,14 +33,18 @@
     name : "String"
 }
 
-[пример ответа](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/generated-snippets/registration/http-response.adoc)
+пример:
 ```
-POST /registration HTTP/1.1
+HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 57
-Host: localhost:8080
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Content-Length: 36
 
-{"username":"randomUsername","password":"randomPassword"}
+{"id":4,"username":"randomUsername"}
 ```
 
 * Создание токена (/authentication):
