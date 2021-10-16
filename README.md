@@ -24,6 +24,14 @@
 }
 
 [пример ответа](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/generated-snippets/registration/http-response.adoc)
+```
+POST /registration HTTP/1.1
+Content-Type: application/json
+Content-Length: 57
+Host: localhost:8080
+
+{"username":"randomUsername","password":"randomPassword"}
+```
 
 * Создание токена (/authentication):
 
