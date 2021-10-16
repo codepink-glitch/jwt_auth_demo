@@ -19,7 +19,7 @@
 ## Эндпоинты приложения:
 
 ### * __Регистрация пользователя:__
-   * (/registration)
+   * __(/registration)__
 
 [Примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/registration)
 
