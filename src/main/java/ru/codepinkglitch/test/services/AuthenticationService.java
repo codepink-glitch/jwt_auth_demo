@@ -9,7 +9,7 @@ import ru.codepinkglitch.test.entities.MyUserDetails;
 import ru.codepinkglitch.test.models.AuthenticationRequest;
 import ru.codepinkglitch.test.models.AuthenticationResponse;
 
-// Класс-сервис, взаимодействующий с контроллером аутентификации.
+// Класс, взаимодействующий с контроллером аутентификации.
 
 @Service
 @RequiredArgsConstructor
