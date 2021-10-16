@@ -201,11 +201,23 @@ Expires: 0
 
 * __Docker:__
 
+С использованием репозитория:
+
 ```
 # Пул образа из репозитория
 docker pull dockerimtiredofinventingnames/jwt_auth_demo:latest
 
-# Развертывание образа с прокидыванием портов [внешний порт:внутренний порт]
-docker run -d -p 8080:8080 dockerimtiredofinventingnames/jwt_auth_demo
+# Развертывание образа с прокидыванием портов 
+docker run -d -p [внешний порт:внутренний порт] dockerimtiredofinventingnames/jwt_auth_demo
+```
+
+Сборка контейнера из проекта: 
+
+```
+# Создание образа
+docker build -t [image_name] .
+
+# Развертывание образа с прокидыванием портов 
+docker run -d -p [внешний порт:внутренний порт] [image_name]
 ```
 
