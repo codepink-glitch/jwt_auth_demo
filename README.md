@@ -1,26 +1,28 @@
-[Создание таблиц и внесение данных (SQL)](#создание-таблиц-и-внесение-данных)
+# __Содержание__
 
-[Эндпоинты](#эндпоинты-приложения)
+## [Создание таблиц и внесение данных (SQL)](#создание-таблиц-и-внесение-данных)
 
-[Регистрация](#регистрация_пользователя_registration)
-[Получение токена](#получение_токена_authentication)
-[Получение сообщений](#получение_и_обработка_сообщений_message)
+## [Эндпоинты](#эндпоинты-приложения)
 
-[Покрытие тестами](#покрытие_тестами)
+### 1. [Регистрация](#регистрация_пользователя_registration)
+### 2. [Получение токена](#получение_токена_authentication)
+### 3. [Получение сообщений](#получение_и_обработка_сообщений_message)
 
-[Развертывание](#развертывание)
+## [Покрытие тестами](#покрытие_тестами)
+
+## [Развертывание](#развертывание)
 
 
 
 
 
-### Создание таблиц и внесение данных: 
+## Создание таблиц и внесение данных: 
 [schema.sql](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/src/main/resources/schema.sql)
 [test_data.sql](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/src/test/resources/test_data.sql)
 
-### Эндпоинты приложения:
+## Эндпоинты приложения:
 
-## * __Регистрация пользователя (/registration):__
+### * __Регистрация пользователя (/registration):__
 
 [Примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/registration)
 
@@ -66,7 +68,7 @@ Content-Length: 36
 {"id":4,"username":"randomUsername"}
 ```
 
-## * __Получение токена (/authentication):__
+### * __Получение токена (/authentication):__
 
 [Примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/authentication)
 
@@ -111,7 +113,7 @@ Content-Length: 149
 {"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmaXJzdF91c2VyIiwiZXhwIjoxNjM0MzUyMzI2LCJpYXQiOjE2MzQzNDg3MjZ9.hsC61Fn9pWJAkYzLjsB-Ksm73clYEEBzIYU1mS9ljUo"}
 ```
 
-## * __Получение и обработка сообщений (/message):__
+### * __Получение и обработка сообщений (/message):__
 
 [Примеры запросов и ответов, попадающих под паттерн](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message%20(requesting%20history))
 
@@ -209,7 +211,7 @@ Expires: 0
 {"id":11,"name":"some_name","message":"some_message"}
 ```
 
-### Покрытие тестами: 
+## Покрытие тестами: 
 
 ![code_coverage](https://raw.githubusercontent.com/codepink-glitch/jwt_auth_demo/master/coverage_report/code_coverage.jpg)
 
