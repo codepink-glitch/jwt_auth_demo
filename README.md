@@ -19,7 +19,7 @@
 ## Эндпоинты приложения:
 
 ### * __Регистрация пользователя:__
-   * __(/registration)__
+   * __POST /registration__
 
 [Примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/registration)
 
@@ -66,7 +66,7 @@ Content-Length: 36
 ```
 
 ### * __Получение токена:__
-   * __(/authentication)__
+   * __POST (/authentication)__
 
 [Примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/authentication)
 
@@ -112,7 +112,7 @@ Content-Length: 149
 ```
 
 ### * __Получение и обработка сообщений:__
-   * __(/message)__
+   * __POST (/message)__
 
 [Примеры запросов и ответов, попадающих под паттерн](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message%20(requesting%20history))
 
