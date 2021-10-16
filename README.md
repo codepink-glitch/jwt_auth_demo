@@ -84,6 +84,3 @@
 
 [пример ответа](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/generated-snippets/message/http-response.adoc)
 
-[![codecov.io](https://codecov.io/github/codepink-glitch/jwt_auth_demo/coverage.svg?branch=master)]
-(https://codecov.io/github/codepink-glitch/jwt_auth_demo?branch=master)
-
