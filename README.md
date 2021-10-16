@@ -3,6 +3,13 @@
 [Эндпоинты](#эндпоинты-приложения)
 
 [Регистрация](#регистрация_пользователя_registration)
+[Получение токена](#получение_токена_authentication)
+[Получение сообщений](#получение_и_обработка_сообщений_message)
+
+[Покрытие тестами](#покрытие_тестами)
+
+[Развертывание](#развертывание)
+
 
 
 
@@ -59,7 +66,7 @@ Content-Length: 36
 {"id":4,"username":"randomUsername"}
 ```
 
-* __Создание токена (/authentication):__
+## * __Получение токена (/authentication):__
 
 [Примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/authentication)
 
@@ -104,7 +111,7 @@ Content-Length: 149
 {"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmaXJzdF91c2VyIiwiZXhwIjoxNjM0MzUyMzI2LCJpYXQiOjE2MzQzNDg3MjZ9.hsC61Fn9pWJAkYzLjsB-Ksm73clYEEBzIYU1mS9ljUo"}
 ```
 
-* __Получение и обработка сообщений (/message):__
+## * __Получение и обработка сообщений (/message):__
 
 [Примеры запросов и ответов, попадающих под паттерн](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message%20(requesting%20history))
 
