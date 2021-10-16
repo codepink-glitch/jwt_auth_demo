@@ -16,9 +16,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.ConfigurableMockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import ru.codepinkglitch.jwt_auth_demo.dtos.in.AuthenticationRequest;
 import ru.codepinkglitch.jwt_auth_demo.dtos.in.MessageIn;
-import ru.codepinkglitch.jwt_auth_demo.models.AuthenticationRequest;
-import ru.codepinkglitch.jwt_auth_demo.models.AuthenticationResponse;
+import ru.codepinkglitch.jwt_auth_demo.dtos.out.AuthenticationResponse;
 import ru.codepinkglitch.jwt_auth_demo.services.AuthenticationService;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;

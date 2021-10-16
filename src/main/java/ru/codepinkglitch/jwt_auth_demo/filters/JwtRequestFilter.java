@@ -27,7 +27,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private final JwtUtilService jwtUtilService;
 
 
-    // Метод из наследуемого класса, применяется, как только очередь в FilterChain доходит до данного фильтра.
+    // Метод из наследуемого класса, применяется как только очередь в FilterChain доходит до данного фильтра.
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,

@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,19 +12,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import ru.codepinkglitch.jwt_auth_demo.filters.JwtRequestFilter;
-import ru.codepinkglitch.jwt_auth_demo.services.MyUserDetailsService;
+
+// Класс, конфигурирующий Spring Security
 
 @RequiredArgsConstructor
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final MyUserDetailsService myUserDetailsService;
     private final JwtRequestFilter jwtRequestFilter;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailsService);
-    }
+    // Настройка Security.
+    // Доступ к эндпоинтам /authentication для получения токена и /registration для регистрации не требует аутентификации, для остальных требуется указание токена в хэдере.
+    // При каждом запросе, требующем аутентификации, указывается токен - создание сессий не требуется, в sessionManagement указывается SessionCreationPolicy.STATELESS.
+    // Фильтр добавляется в цепочку фильтров перед стандартным UsernamePasswordAuthenticationFilter и до него аутентифицирует пользователя в SecurityContextHolder.
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -33,14 +32,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/authentication").permitAll()
                 .antMatchers("/registration").permitAll()
-                .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
-        http.headers().frameOptions().disable();
     }
+
+    // В проекте используется стандартный AuthenticationManager из Spring Security для аутентификации в классе AuthenticationService.
+    // В прошлых версиях спринг данный бин создавался сам, теперь прописываем бин.
 
     @Bean
     @Override
@@ -48,10 +47,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+    // Создается бин для шифрования паролей, спринг автоматически его использует.
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    // При указании аннотации @Bean или аналогичной (в данном случае @Component)
+    // над классом фильтра (JwtRequestFilter), спринг автоматически его добавляет в цепочку фильтров.
+    // Данный бин отключает автоматическое встраивание фильтра в цепочку.
 
     @Bean
     public FilterRegistrationBean jwtRequestFilterRegistration(JwtRequestFilter jwtRequestFilter) {

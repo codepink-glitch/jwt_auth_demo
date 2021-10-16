@@ -1,6 +1,5 @@
 package ru.codepinkglitch.jwt_auth_demo.services;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,7 +20,6 @@ public class MyUserDetailsService implements UserDetailsService {
 
     private final UserDetailsRepository userDetailsRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-    private final ObjectMapper objectMapper;
 
     @Override
     public MyUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -37,10 +35,6 @@ public class MyUserDetailsService implements UserDetailsService {
         MyUserDetails myUserDetails = new MyUserDetails();
         myUserDetails.setUsername(userDetailsIn.getUsername());
         myUserDetails.setPassword(bCryptPasswordEncoder.encode(userDetailsIn.getPassword()));
-        myUserDetails.setAccountNonExpired(true);
-        myUserDetails.setAccountNonLocked(true);
-        myUserDetails.setCredentialsNonExpired(true);
-        myUserDetails.setEnabled(true);
         MyAuthority myAuthority = new MyAuthority();
         myAuthority.setAuthority(Role.USER);
         myAuthority.setUserDetails(myUserDetails);

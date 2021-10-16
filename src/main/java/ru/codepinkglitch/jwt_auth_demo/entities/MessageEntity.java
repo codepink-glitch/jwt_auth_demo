@@ -21,10 +21,10 @@ public class MessageEntity {
     @Column(name = "MESSAGE_ID")
     private Long id;
 
-    @Column(name = "MESSAGE_NAME")
+    @Column(name = "MESSAGE_NAME", nullable = false)
     private String name;
 
-    @Column(name = "MESSAGE_CONTENT")
+    @Column(name = "MESSAGE_CONTENT", nullable = false)
     private String message;
 
     @Temporal(TemporalType.TIMESTAMP)

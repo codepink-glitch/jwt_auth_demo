@@ -5,9 +5,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
+import ru.codepinkglitch.jwt_auth_demo.dtos.in.AuthenticationRequest;
+import ru.codepinkglitch.jwt_auth_demo.dtos.out.AuthenticationResponse;
 import ru.codepinkglitch.jwt_auth_demo.entities.MyUserDetails;
-import ru.codepinkglitch.jwt_auth_demo.models.AuthenticationRequest;
-import ru.codepinkglitch.jwt_auth_demo.models.AuthenticationResponse;
 
 // Класс-сервис, взаимодействующий с контроллером аутентификации.
 

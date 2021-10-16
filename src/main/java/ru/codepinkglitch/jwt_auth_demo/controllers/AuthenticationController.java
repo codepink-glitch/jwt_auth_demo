@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.codepinkglitch.jwt_auth_demo.models.AuthenticationRequest;
-import ru.codepinkglitch.jwt_auth_demo.models.AuthenticationResponse;
+import ru.codepinkglitch.jwt_auth_demo.dtos.in.AuthenticationRequest;
+import ru.codepinkglitch.jwt_auth_demo.dtos.out.AuthenticationResponse;
 import ru.codepinkglitch.jwt_auth_demo.services.AuthenticationService;
 
 @RestController
