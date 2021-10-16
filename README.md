@@ -51,6 +51,7 @@ Content-Length: 36
 ```
 
 * Создание токена (/authentication):
+* 
 [Примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/authentication)
 
 Эндпоинт получает данные в виде json файла:
@@ -95,7 +96,9 @@ Content-Length: 149
 ```
 
 * Получение и обработка сообщений (/message):
+* 
 [Примеры запросов и ответов, попадающих под паттерн](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message%20(requesting%20history))
+
 [Примеры запросов и ответов, не попадающих под паттерн](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message)
 
 Эндпоинт получает данные в виде json файла, в заголовке должен быть указан токен для аутентификации, в случае, если токен не указан/неверный/срок действия истек,
