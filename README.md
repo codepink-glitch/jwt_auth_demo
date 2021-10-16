@@ -1,15 +1,19 @@
-[Создание таблиц и внесение данных (SQL)](#Создание-таблиц-и-внесение-данных)
-[Эндпоинты](#Эндпоинты-приложения)
+[Создание таблиц и внесение данных (SQL)](#создание-таблиц-и-внесение-данных)
+
+[Эндпоинты](#эндпоинты-приложения)
+
+[Регистрация](#регистрация_пользователя_registration)
 
 
 
-## Создание таблиц и внесение данных: 
+
+### Создание таблиц и внесение данных: 
 [schema.sql](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/src/main/resources/schema.sql)
 [test_data.sql](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/src/test/resources/test_data.sql)
 
 ### Эндпоинты приложения:
 
- * __Регистрация пользователя (/registration):__
+## * __Регистрация пользователя (/registration):__
 
 [Примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/registration)
 
