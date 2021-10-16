@@ -95,12 +95,12 @@ Content-Length: 149
 ```
 
 * Получение и обработка сообщений (/message):
-[Примеры запросов и ответов с regex](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message%20(requesting%20history))
-[Примеры запросов и ответов без regex](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message)
+[Примеры запросов и ответов, попадающих под паттерн](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message%20(requesting%20history))
+[Примеры запросов и ответов, не попадающих под паттерн](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message)
 
 Эндпоинт получает данные в виде json файла, в заголовке должен быть указан токен для аутентификации, в случае, если токен не указан/неверный/срок действия истек,
 возвращается страница со статусом 403.
-Сообщения могут быть двух видов (соответсвующее regex: \bhistory\b\s\d{1,n} или нет), в зависимости от сообщения эндпоинт возвращает разные значения.
+Сообщения могут быть двух видов (попадающее под паттерн regex: \bhistory\b\s\d{1,n} или нет), в зависимости от сообщения эндпоинт возвращает разные значения.
 
 Общий вид сообщения:
 
@@ -112,7 +112,7 @@ Content-Length: 149
 ```
 
 
-Пример сообщения с regex:
+Пример сообщения, попадающего под паттерн:
 
 ``` 
 POST /message HTTP/1.1
@@ -136,7 +136,7 @@ Host: localhost:8080
 ]
 ```
 
-Пример ответа с regex:
+Пример ответа на сообщение, попадающего под паттерн:
 
 ```
 HTTP/1.1 200 OK
@@ -151,7 +151,7 @@ Expires: 0
 [{"id":7,"name":"user7","message":"7"},{"id":6,"name":"user6","message":"6"},{"id":10,"name":"user10","message":"10"},{"id":9,"name":"user9","message":"9"},{"id":8,"name":"user8","message":"8"},{"id":1,"name":"user1","message":"1"},{"id":5,"name":"user5","message":"5"},{"id":4,"name":"user4","message":"4"},{"id":2,"name":"user2","message":"2"},{"id":3,"name":"user3","message":"3"}]
 ```
 
-Сообщение, не попадающее под regex. 
+Сообщение, не попадающее под паттерн. 
 
 Пример:
 
