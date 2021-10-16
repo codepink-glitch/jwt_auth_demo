@@ -6,6 +6,8 @@
 
 * Регистрация пользователя (/registration):
 
+[примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/registration)
+
 Эндпоинт получает данные в виде json файла: 
 
 {
