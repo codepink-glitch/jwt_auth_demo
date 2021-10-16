@@ -1,7 +1,7 @@
-[Создание таблиц и внесение данных](# Создание таблиц и внесение данных:)
+[Ссылка](#Создание-таблиц-и-внесение-данных)
 
 
-### Создание таблиц и внесение данных: 
+## Создание таблиц и внесение данных: 
 [schema.sql](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/src/main/resources/schema.sql)
 [test_data.sql](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/src/test/resources/test_data.sql)
 
