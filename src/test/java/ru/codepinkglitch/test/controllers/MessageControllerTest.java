@@ -104,7 +104,7 @@ public class MessageControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(messageIn))
                         .header("Authorization", "Bearer " + testUserToken.getToken()))
-                .andDo(document(URI.replace("/", "\\")))
+                .andDo(document(URI.replace("/", "\\") + " requesting history"))
                 .andExpect(jsonPath("$.length()").value(numOfMessages))
                 .andExpect(status().isOk());
     }
@@ -118,7 +118,7 @@ public class MessageControllerTest {
         mockMvc.perform(post(URI)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(messageIn)))
-                .andDo(document(URI.replace("/", "\\")))
+                .andDo(document(URI.replace("/", "\\") + " unauthorized access"))
                 .andExpect(status().isForbidden());
     }
 

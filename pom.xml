@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.codepinkglitch</groupId>
-    <artifactId>test</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>test</name>
-    <description>test</description>
+    <artifactId>jwt_auth_demo</artifactId>
+    <version>1.0</version>
+    <name>jwt_auth_demo</name>
+    <description>Simple Spring Boot application with jwt authorization.</description>
     <properties>
         <java.version>11</java.version>
     </properties>
