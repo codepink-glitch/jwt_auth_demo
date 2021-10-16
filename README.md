@@ -197,3 +197,15 @@ Expires: 0
 
 ![code_coverage](https://raw.githubusercontent.com/codepink-glitch/jwt_auth_demo/master/coverage_report/code_coverage.jpg)
 
+## Развертывание: 
+
+* __Docker:__
+
+```
+# Пул образа из репозитория
+docker pull dockerimtiredofinventingnames/jwt_auth_demo:latest
+
+# Развертывание образа с прокидыванием портов [внешний порт:внутренний порт]
+docker run -d -p 8080:8080 dockerimtiredofinventingnames/jwt_auth_demo
+```
+
