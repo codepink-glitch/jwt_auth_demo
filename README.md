@@ -193,3 +193,7 @@ Expires: 0
 {"id":11,"name":"some_name","message":"some_message"}
 ```
 
+### Покрытие тестами: 
+
+![code_coverage](https://raw.githubusercontent.com/codepink-glitch/jwt_auth_demo/master/coverage_report/code_coverage.jpg)
+
