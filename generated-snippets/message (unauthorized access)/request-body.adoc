@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+{"name":"unauthorized_name","message":"unauthorized_message"}
+----

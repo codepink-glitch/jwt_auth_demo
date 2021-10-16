@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+{"id":11,"name":"some_name","message":"some_message"}
+----

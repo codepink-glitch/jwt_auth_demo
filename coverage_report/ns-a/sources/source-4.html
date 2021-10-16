@@ -17,10 +17,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">ru.codepinkglitch.test.services</a>
+    <a href="../index.html">ru.codepinkglitch.jwt_auth_demo.services</a>
 </div>
 
-<h1>Coverage Summary for Class: MyUserDetailsService (ru.codepinkglitch.test.services)</h1>
+<h1>Coverage Summary for Class: MyUserDetailsService (ru.codepinkglitch.jwt_auth_demo.services)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -73,7 +73,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.test.services;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.jwt_auth_demo.services;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;import com.fasterxml.jackson.databind.ObjectMapper;
 <i class="no-highlight">4</i>&nbsp;import lombok.RequiredArgsConstructor;
@@ -81,12 +81,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">6</i>&nbsp;import org.springframework.security.core.userdetails.UsernameNotFoundException;
 <i class="no-highlight">7</i>&nbsp;import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 <i class="no-highlight">8</i>&nbsp;import org.springframework.stereotype.Service;
-<i class="no-highlight">9</i>&nbsp;import ru.codepinkglitch.test.dtos.in.UserDetailsIn;
-<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.test.dtos.out.UserDetailsOut;
-<i class="no-highlight">11</i>&nbsp;import ru.codepinkglitch.test.entities.MyAuthority;
-<i class="no-highlight">12</i>&nbsp;import ru.codepinkglitch.test.entities.MyUserDetails;
-<i class="no-highlight">13</i>&nbsp;import ru.codepinkglitch.test.enums.Role;
-<i class="no-highlight">14</i>&nbsp;import ru.codepinkglitch.test.repositories.UserDetailsRepository;
+<i class="no-highlight">9</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.dtos.in.UserDetailsIn;
+<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.dtos.out.UserDetailsOut;
+<i class="no-highlight">11</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.entities.MyAuthority;
+<i class="no-highlight">12</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.entities.MyUserDetails;
+<i class="no-highlight">13</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.enums.Role;
+<i class="no-highlight">14</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.repositories.UserDetailsRepository;
 <i class="no-highlight">15</i>&nbsp;
 <i class="no-highlight">16</i>&nbsp;import java.util.Collections;
 <i class="no-highlight">17</i>&nbsp;

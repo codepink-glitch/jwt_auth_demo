@@ -17,10 +17,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">ru.codepinkglitch.test.services</a>
+    <a href="../index.html">ru.codepinkglitch.jwt_auth_demo.services</a>
 </div>
 
-<h1>Coverage Summary for Class: JwtUtilService (ru.codepinkglitch.test.services)</h1>
+<h1>Coverage Summary for Class: JwtUtilService (ru.codepinkglitch.jwt_auth_demo.services)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -73,7 +73,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.test.services;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.jwt_auth_demo.services;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;import io.jsonwebtoken.Claims;
 <i class="no-highlight">4</i>&nbsp;import io.jsonwebtoken.Jwts;
@@ -81,15 +81,15 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">6</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
 <i class="no-highlight">7</i>&nbsp;import org.springframework.beans.factory.annotation.Value;
 <i class="no-highlight">8</i>&nbsp;import org.springframework.stereotype.Service;
-<i class="no-highlight">9</i>&nbsp;import ru.codepinkglitch.test.entities.MyUserDetails;
+<i class="no-highlight">9</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.entities.MyUserDetails;
 <i class="no-highlight">10</i>&nbsp;
 <i class="no-highlight">11</i>&nbsp;import java.util.Date;
 <i class="no-highlight">12</i>&nbsp;import java.util.HashMap;
 <i class="no-highlight">13</i>&nbsp;import java.util.Map;
 <i class="no-highlight">14</i>&nbsp;import java.util.function.Function;
 <i class="no-highlight">15</i>&nbsp;
-<i class="no-highlight">16</i>&nbsp;// Класс для операций с токенами (создание, валидация, извлечение данных).
-<i class="no-highlight">17</i>&nbsp;// Используется сторонняя библиотека jjwt.
+<i class="no-highlight">16</i>&nbsp;// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ).
+<i class="no-highlight">17</i>&nbsp;// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ jjwt.
 <i class="no-highlight">18</i>&nbsp;
 <i class="no-highlight">19</i>&nbsp;@Service
 <i class="no-highlight">20</i>&nbsp;public class JwtUtilService {
@@ -97,16 +97,16 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">22</i>&nbsp;    private static final Long EXPIRATION_PERIOD = 1000 * 60 * 60L;</b>
 <i class="no-highlight">23</i>&nbsp;    private final String key;
 <i class="no-highlight">24</i>&nbsp;
-<i class="no-highlight">25</i>&nbsp;    // Конструктор для инициализации ключа, использующегося при генерации токенов.
-<i class="no-highlight">26</i>&nbsp;    // Ключ извлекается из application.yml
+<i class="no-highlight">25</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">26</i>&nbsp;    // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ application.yml
 <i class="no-highlight">27</i>&nbsp;
 <i class="no-highlight">28</i>&nbsp;    @Autowired
 <b class="fc"><i class="no-highlight">29</i>&nbsp;    public JwtUtilService(@Value(&quot;${runtime_variables.secret_key}&quot;) String key) {</b>
 <b class="fc"><i class="no-highlight">30</i>&nbsp;        this.key = key;</b>
 <i class="no-highlight">31</i>&nbsp;    }
 <i class="no-highlight">32</i>&nbsp;
-<i class="no-highlight">33</i>&nbsp;    // Вспомогательный метод для создания токена, используется сторонняя библиотека.
-<i class="no-highlight">34</i>&nbsp;    // В токен записывается имя пользователя, дата создания и дата истечения действия токена.
+<i class="no-highlight">33</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">34</i>&nbsp;    // пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">35</i>&nbsp;
 <i class="no-highlight">36</i>&nbsp;    private String createToken(Map&lt;String, Object&gt; claims, String subject) {
 <b class="fc"><i class="no-highlight">37</i>&nbsp;        return Jwts.builder()</b>
@@ -118,47 +118,47 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">43</i>&nbsp;                .compact();</b>
 <i class="no-highlight">44</i>&nbsp;    }
 <i class="no-highlight">45</i>&nbsp;
-<i class="no-highlight">46</i>&nbsp;    // Метод для генерации токена.
-<i class="no-highlight">47</i>&nbsp;    // Никакая дополнительная информация, кроме имени пользователя,
-<i class="no-highlight">48</i>&nbsp;    // для создания токена не используется (Передается пустая карта).
+<i class="no-highlight">46</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">47</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,
+<i class="no-highlight">48</i>&nbsp;    // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ).
 <i class="no-highlight">49</i>&nbsp;
 <i class="no-highlight">50</i>&nbsp;    public String generateToken(MyUserDetails userDetails) {
 <b class="fc"><i class="no-highlight">51</i>&nbsp;        Map&lt;String, Object&gt; claims = new HashMap&lt;&gt;();</b>
 <b class="fc"><i class="no-highlight">52</i>&nbsp;        return createToken(claims, userDetails.getUsername());</b>
 <i class="no-highlight">53</i>&nbsp;    }
 <i class="no-highlight">54</i>&nbsp;
-<i class="no-highlight">55</i>&nbsp;    // Извлечение всех параметров, записанных в токен.
+<i class="no-highlight">55</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">56</i>&nbsp;
 <i class="no-highlight">57</i>&nbsp;    private Claims extractAllClaims(String token) {
 <b class="fc"><i class="no-highlight">58</i>&nbsp;        return Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();</b>
 <i class="no-highlight">59</i>&nbsp;    }
 <i class="no-highlight">60</i>&nbsp;
-<i class="no-highlight">61</i>&nbsp;    // Извлечение конкретного параметра, записанных в токен.
+<i class="no-highlight">61</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">62</i>&nbsp;
 <i class="no-highlight">63</i>&nbsp;    public &lt;T&gt; T extractClaim(String token, Function&lt;Claims, T&gt; claimsResolver) {
 <b class="fc"><i class="no-highlight">64</i>&nbsp;        final Claims claims = extractAllClaims(token);</b>
 <b class="fc"><i class="no-highlight">65</i>&nbsp;        return claimsResolver.apply(claims);</b>
 <i class="no-highlight">66</i>&nbsp;    }
 <i class="no-highlight">67</i>&nbsp;
-<i class="no-highlight">68</i>&nbsp;    // Извлечение имени пользователя из токена.
+<i class="no-highlight">68</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">69</i>&nbsp;
 <i class="no-highlight">70</i>&nbsp;    public String extractUsername(String token) {
 <b class="fc"><i class="no-highlight">71</i>&nbsp;        return extractClaim(token, Claims::getSubject);</b>
 <i class="no-highlight">72</i>&nbsp;    }
 <i class="no-highlight">73</i>&nbsp;
-<i class="no-highlight">74</i>&nbsp;    // Извлечение времени истечения токена.
+<i class="no-highlight">74</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">75</i>&nbsp;
 <i class="no-highlight">76</i>&nbsp;    public Date extractExpiration(String token) {
 <b class="fc"><i class="no-highlight">77</i>&nbsp;        return extractClaim(token, Claims::getExpiration);</b>
 <i class="no-highlight">78</i>&nbsp;    }
 <i class="no-highlight">79</i>&nbsp;
-<i class="no-highlight">80</i>&nbsp;    // Проверка на действительность токена по времени.
+<i class="no-highlight">80</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">81</i>&nbsp;
 <i class="no-highlight">82</i>&nbsp;    private Boolean isTokenExpired(String token) {
 <b class="fc"><i class="no-highlight">83</i>&nbsp;        return extractExpiration(token).before(new Date());</b>
 <i class="no-highlight">84</i>&nbsp;    }
 <i class="no-highlight">85</i>&nbsp;
-<i class="no-highlight">86</i>&nbsp;    // Валидация токена.
+<i class="no-highlight">86</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">87</i>&nbsp;
 <i class="no-highlight">88</i>&nbsp;    public Boolean validateToken(String token, MyUserDetails userDetails) {
 <b class="fc"><i class="no-highlight">89</i>&nbsp;        return extractUsername(token).equals(userDetails.getUsername()) &amp;&amp; isTokenExpired(token).equals(false);</b>

@@ -17,10 +17,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">ru.codepinkglitch.test.services</a>
+    <a href="../index.html">ru.codepinkglitch.jwt_auth_demo.services</a>
 </div>
 
-<h1>Coverage Summary for Class: MessageService (ru.codepinkglitch.test.services)</h1>
+<h1>Coverage Summary for Class: MessageService (ru.codepinkglitch.jwt_auth_demo.services)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -73,21 +73,21 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.test.services;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.jwt_auth_demo.services;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;import com.fasterxml.jackson.core.JsonProcessingException;
 <i class="no-highlight">4</i>&nbsp;import com.fasterxml.jackson.databind.ObjectMapper;
 <i class="no-highlight">5</i>&nbsp;import lombok.RequiredArgsConstructor;
 <i class="no-highlight">6</i>&nbsp;import org.springframework.stereotype.Service;
-<i class="no-highlight">7</i>&nbsp;import ru.codepinkglitch.test.dtos.in.MessageIn;
-<i class="no-highlight">8</i>&nbsp;import ru.codepinkglitch.test.dtos.out.MessageOut;
-<i class="no-highlight">9</i>&nbsp;import ru.codepinkglitch.test.entities.Message;
-<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.test.repositories.MessageRepository;
+<i class="no-highlight">7</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.dtos.in.MessageIn;
+<i class="no-highlight">8</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.dtos.out.MessageOut;
+<i class="no-highlight">9</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.entities.Message;
+<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.repositories.MessageRepository;
 <i class="no-highlight">11</i>&nbsp;
 <i class="no-highlight">12</i>&nbsp;import java.util.List;
 <i class="no-highlight">13</i>&nbsp;import java.util.stream.Collectors;
 <i class="no-highlight">14</i>&nbsp;
-<i class="no-highlight">15</i>&nbsp;// Класс-сервис, взаимодействующий с контроллером, принимающим сообщения.
+<i class="no-highlight">15</i>&nbsp;// пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">16</i>&nbsp;
 <i class="no-highlight">17</i>&nbsp;@Service
 <b class="fc"><i class="no-highlight">18</i>&nbsp;@RequiredArgsConstructor</b>
@@ -99,14 +99,14 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">24</i>&nbsp;    private final MessageRepository messageRepository;
 <i class="no-highlight">25</i>&nbsp;    private final ObjectMapper objectMapper;
 <i class="no-highlight">26</i>&nbsp;
-<i class="no-highlight">27</i>&nbsp;    // Сохранение сообщения, возвращает зарегистрированное сообщение.
+<i class="no-highlight">27</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">28</i>&nbsp;
 <i class="no-highlight">29</i>&nbsp;    private MessageOut receiveMessage(MessageIn messageIn) {
 <b class="fc"><i class="no-highlight">30</i>&nbsp;        Message saved = messageRepository.save(objectMapper.convertValue(messageIn, Message.class));</b>
 <b class="fc"><i class="no-highlight">31</i>&nbsp;        return objectMapper.convertValue(saved, MessageOut.class);</b>
 <i class="no-highlight">32</i>&nbsp;    }
 <i class="no-highlight">33</i>&nbsp;
-<i class="no-highlight">34</i>&nbsp;    // Получение из базы данных последних n сообщений и возврат их в контроллер.
+<i class="no-highlight">34</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ n пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">35</i>&nbsp;
 <i class="no-highlight">36</i>&nbsp;    private List&lt;MessageOut&gt; findLastFew(MessageIn messageIn) {
 <b class="fc"><i class="no-highlight">37</i>&nbsp;        int numOfMessages = Integer.parseInt(messageIn.getMessage().replaceAll(&quot;\\D+&quot;, &quot;&quot;));</b>
@@ -116,10 +116,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">41</i>&nbsp;                .collect(Collectors.toList());</b>
 <i class="no-highlight">42</i>&nbsp;    }
 <i class="no-highlight">43</i>&nbsp;
-<i class="no-highlight">44</i>&nbsp;    // Данный метод взаимодействует с контроллером.
-<i class="no-highlight">45</i>&nbsp;    // Полученное сообщение проверяется на формат: сообщение или запрос последних n сообщений.
-<i class="no-highlight">46</i>&nbsp;    // В случае сообщения, метод возвращает в контроллер сериализованное в json зарегистрированное сообщение.
-<i class="no-highlight">47</i>&nbsp;    // В случае запроса последних n сообщений, метод возвращает в контроллер сериализованный в json список последних n сообщений.
+<i class="no-highlight">44</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">45</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ n пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">46</i>&nbsp;    // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ json пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">47</i>&nbsp;    // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ n пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ json пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ n пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">48</i>&nbsp;
 <i class="no-highlight">49</i>&nbsp;    public String processMessage(MessageIn messageIn) {
 <b class="fc"><i class="no-highlight">50</i>&nbsp;        String[] split = messageIn.getMessage().split(&quot; &quot;);</b>

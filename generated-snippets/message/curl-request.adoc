@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/message' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmaXJzdF91c2VyIiwiZXhwIjoxNjM0MzUyMzI2LCJpYXQiOjE2MzQzNDg3MjZ9.hsC61Fn9pWJAkYzLjsB-Ksm73clYEEBzIYU1mS9ljUo' \
+    -d '{"name":"some_name","message":"some_message"}'
+----

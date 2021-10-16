@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/message' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{"name":"unauthorized_name","message":"unauthorized_message"}'
+----

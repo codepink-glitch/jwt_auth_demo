@@ -17,10 +17,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">ru.codepinkglitch.test.controllers</a>
+    <a href="../index.html">ru.codepinkglitch.jwt_auth_demo.controllers</a>
 </div>
 
-<h1>Coverage Summary for Class: MessageController (ru.codepinkglitch.test.controllers)</h1>
+<h1>Coverage Summary for Class: MessageController (ru.codepinkglitch.jwt_auth_demo.controllers)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -73,7 +73,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.test.controllers;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.jwt_auth_demo.controllers;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;import lombok.RequiredArgsConstructor;
 <i class="no-highlight">4</i>&nbsp;import org.springframework.http.HttpStatus;
@@ -82,8 +82,8 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">7</i>&nbsp;import org.springframework.web.bind.annotation.RequestBody;
 <i class="no-highlight">8</i>&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
 <i class="no-highlight">9</i>&nbsp;import org.springframework.web.bind.annotation.RestController;
-<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.test.dtos.in.MessageIn;
-<i class="no-highlight">11</i>&nbsp;import ru.codepinkglitch.test.services.MessageService;
+<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.dtos.in.MessageIn;
+<i class="no-highlight">11</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.services.MessageService;
 <i class="no-highlight">12</i>&nbsp;
 <b class="fc"><i class="no-highlight">13</i>&nbsp;@RequiredArgsConstructor</b>
 <i class="no-highlight">14</i>&nbsp;@RestController
@@ -92,10 +92,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">17</i>&nbsp;
 <i class="no-highlight">18</i>&nbsp;    private final MessageService messageService;
 <i class="no-highlight">19</i>&nbsp;
-<i class="no-highlight">20</i>&nbsp;    // Пользователь отравляет сообщение в виде json файла с указанием имени пользователя и сообщением.
-<i class="no-highlight">21</i>&nbsp;    // В ответ система возвращает зарегистрированное сообщение.
-<i class="no-highlight">22</i>&nbsp;    // К этому эндпоинту пользователь может получить доступ только в случае предъявления токена, полученного в эндпоинте /authentication, в хэдере запроса.
-<i class="no-highlight">23</i>&nbsp;    // В случае, если сообщение имеет вид: history {n:Integer}, система возвращает пользователю список последних n сообщений, зарегестрированных в системе.
+<i class="no-highlight">20</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ json пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">21</i>&nbsp;    // пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">22</i>&nbsp;    // пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ /authentication, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">23</i>&nbsp;    // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ: history {n:Integer}, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ n пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">24</i>&nbsp;
 <i class="no-highlight">25</i>&nbsp;    @PostMapping
 <i class="no-highlight">26</i>&nbsp;    public ResponseEntity&lt;String&gt; processMessage(@RequestBody MessageIn messageIn) {

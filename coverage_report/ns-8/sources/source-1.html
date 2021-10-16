@@ -17,10 +17,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">ru.codepinkglitch.test.filters</a>
+    <a href="../index.html">ru.codepinkglitch.jwt_auth_demo.filters</a>
 </div>
 
-<h1>Coverage Summary for Class: JwtRequestFilter (ru.codepinkglitch.test.filters)</h1>
+<h1>Coverage Summary for Class: JwtRequestFilter (ru.codepinkglitch.jwt_auth_demo.filters)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -73,7 +73,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.test.filters;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.jwt_auth_demo.filters;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;import lombok.RequiredArgsConstructor;
 <i class="no-highlight">4</i>&nbsp;import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -81,9 +81,9 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">6</i>&nbsp;import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 <i class="no-highlight">7</i>&nbsp;import org.springframework.stereotype.Component;
 <i class="no-highlight">8</i>&nbsp;import org.springframework.web.filter.OncePerRequestFilter;
-<i class="no-highlight">9</i>&nbsp;import ru.codepinkglitch.test.entities.MyUserDetails;
-<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.test.services.JwtUtilService;
-<i class="no-highlight">11</i>&nbsp;import ru.codepinkglitch.test.services.MyUserDetailsService;
+<i class="no-highlight">9</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.entities.MyUserDetails;
+<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.services.JwtUtilService;
+<i class="no-highlight">11</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.services.MyUserDetailsService;
 <i class="no-highlight">12</i>&nbsp;
 <i class="no-highlight">13</i>&nbsp;import javax.servlet.FilterChain;
 <i class="no-highlight">14</i>&nbsp;import javax.servlet.ServletException;
@@ -91,8 +91,8 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">16</i>&nbsp;import javax.servlet.http.HttpServletResponse;
 <i class="no-highlight">17</i>&nbsp;import java.io.IOException;
 <i class="no-highlight">18</i>&nbsp;
-<i class="no-highlight">19</i>&nbsp;// Класс, использующийся в качестве фильтра Spring Security.
-<i class="no-highlight">20</i>&nbsp;// Наследуется от OncePerRequestFilter, таким образом, срабатывает один раз на запрос.
+<i class="no-highlight">19</i>&nbsp;// пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Spring Security.
+<i class="no-highlight">20</i>&nbsp;// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ OncePerRequestFilter, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">21</i>&nbsp;
 <b class="fc"><i class="no-highlight">22</i>&nbsp;@RequiredArgsConstructor</b>
 <i class="no-highlight">23</i>&nbsp;@Component
@@ -102,7 +102,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">27</i>&nbsp;    private final JwtUtilService jwtUtilService;
 <i class="no-highlight">28</i>&nbsp;
 <i class="no-highlight">29</i>&nbsp;
-<i class="no-highlight">30</i>&nbsp;    // Метод из наследуемого класса, применяется, как только очередь в FilterChain доходит до данного фильтра.
+<i class="no-highlight">30</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ FilterChain пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">31</i>&nbsp;
 <i class="no-highlight">32</i>&nbsp;    @Override
 <i class="no-highlight">33</i>&nbsp;    protected void doFilterInternal(HttpServletRequest request,
@@ -113,28 +113,28 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">38</i>&nbsp;        String username = null;</b>
 <b class="fc"><i class="no-highlight">39</i>&nbsp;        String token = null;</b>
 <i class="no-highlight">40</i>&nbsp;
-<i class="no-highlight">41</i>&nbsp;        // Проверяется, есть ли в запросе хэдер с токеном.
-<i class="no-highlight">42</i>&nbsp;        // В случае наличия в хэдере токена, из токена извлекается имя пользователя.
-<i class="no-highlight">43</i>&nbsp;        // Токен сохраняется в переменной для последующей валидации.
+<i class="no-highlight">41</i>&nbsp;        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">42</i>&nbsp;        // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">43</i>&nbsp;        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">44</i>&nbsp;
 <b class="fc"><i class="no-highlight">45</i>&nbsp;        if (authorizationHeader != null &amp;&amp; authorizationHeader.startsWith(&quot;Bearer &quot;)) {</b>
 <b class="fc"><i class="no-highlight">46</i>&nbsp;            token = authorizationHeader.substring(7);</b>
 <b class="fc"><i class="no-highlight">47</i>&nbsp;            username = jwtUtilService.extractUsername(token);</b>
 <i class="no-highlight">48</i>&nbsp;        }
 <i class="no-highlight">49</i>&nbsp;
-<i class="no-highlight">50</i>&nbsp;        // Проверяется, было ли извлечено из токена имя пользователя и был ли пользователь аутентифицирован до этого.
+<i class="no-highlight">50</i>&nbsp;        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">51</i>&nbsp;
 <b class="fc"><i class="no-highlight">52</i>&nbsp;        if (username != null &amp;&amp; SecurityContextHolder.getContext().getAuthentication() == null) {</b>
 <i class="no-highlight">53</i>&nbsp;
-<i class="no-highlight">54</i>&nbsp;            // Данные пользователя извлекаются из базы данных по имени пользователя.
+<i class="no-highlight">54</i>&nbsp;            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">55</i>&nbsp;
 <b class="fc"><i class="no-highlight">56</i>&nbsp;            MyUserDetails userDetails = userDetailsService.loadUserByUsername(username);</b>
 <i class="no-highlight">57</i>&nbsp;
-<i class="no-highlight">58</i>&nbsp;            // Проверяется валидность токена.
+<i class="no-highlight">58</i>&nbsp;            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">59</i>&nbsp;
 <b class="fc"><i class="no-highlight">60</i>&nbsp;            if (jwtUtilService.validateToken(token, userDetails).equals(true)) {</b>
 <i class="no-highlight">61</i>&nbsp;
-<i class="no-highlight">62</i>&nbsp;                // В случае валидности токена, пользователь аутентифицируется в SecurityContextHolder.
+<i class="no-highlight">62</i>&nbsp;                // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ SecurityContextHolder.
 <i class="no-highlight">63</i>&nbsp;
 <b class="fc"><i class="no-highlight">64</i>&nbsp;                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(</b>
 <b class="fc"><i class="no-highlight">65</i>&nbsp;                        userDetails, null, userDetails.getAuthorities()</b>
@@ -144,7 +144,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">69</i>&nbsp;            }
 <i class="no-highlight">70</i>&nbsp;        }
 <i class="no-highlight">71</i>&nbsp;
-<i class="no-highlight">72</i>&nbsp;        // Управление передается дальше по цепочке фильтров FilterChain.
+<i class="no-highlight">72</i>&nbsp;        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ FilterChain.
 <i class="no-highlight">73</i>&nbsp;
 <b class="fc"><i class="no-highlight">74</i>&nbsp;        chain.doFilter(request, response);</b>
 <i class="no-highlight">75</i>&nbsp;    }

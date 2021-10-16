@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/authentication' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{"username":"first_user","password":"password1"}'
+----

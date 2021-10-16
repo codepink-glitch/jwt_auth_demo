@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+{"name":"some_name","message":"some_message"}
+----

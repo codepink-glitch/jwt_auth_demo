@@ -17,10 +17,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">ru.codepinkglitch.test.repositories</a>
+    <a href="../index.html">ru.codepinkglitch.jwt_auth_demo.repositories</a>
 </div>
 
-<h1>Coverage Summary for Class: MessageRepository (ru.codepinkglitch.test.repositories)</h1>
+<h1>Coverage Summary for Class: MessageRepository (ru.codepinkglitch.jwt_auth_demo.repositories)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -37,22 +37,22 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.test.repositories;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.jwt_auth_demo.repositories;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
 <i class="no-highlight">4</i>&nbsp;import org.springframework.data.jpa.repository.Query;
 <i class="no-highlight">5</i>&nbsp;import org.springframework.data.repository.query.Param;
 <i class="no-highlight">6</i>&nbsp;import org.springframework.stereotype.Repository;
-<i class="no-highlight">7</i>&nbsp;import ru.codepinkglitch.test.entities.Message;
+<i class="no-highlight">7</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.entities.Message;
 <i class="no-highlight">8</i>&nbsp;
 <i class="no-highlight">9</i>&nbsp;import java.util.List;
 <i class="no-highlight">10</i>&nbsp;
-<i class="no-highlight">11</i>&nbsp;//Класс-репозиторий для взаимодействия с базой данных.
+<i class="no-highlight">11</i>&nbsp;//пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">12</i>&nbsp;
 <i class="no-highlight">13</i>&nbsp;@Repository
 <i class="no-highlight">14</i>&nbsp;public interface MessageRepository extends JpaRepository&lt;Message, Long&gt; {
 <i class="no-highlight">15</i>&nbsp;
-<i class="no-highlight">16</i>&nbsp;    // Метод для получения последних n сообщений из базы данных.
+<i class="no-highlight">16</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ n пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 <i class="no-highlight">17</i>&nbsp;
 <i class="no-highlight">18</i>&nbsp;    @Query(nativeQuery = true,
 <i class="no-highlight">19</i>&nbsp;            value = &quot;SELECT * FROM MESSAGE ORDER BY CREATED_AT DESC FETCH FIRST :num ROWS ONLY&quot;)

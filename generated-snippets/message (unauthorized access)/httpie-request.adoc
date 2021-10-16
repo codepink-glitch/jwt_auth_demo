@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ echo '{"name":"unauthorized_name","message":"unauthorized_message"}' | http POST 'http://localhost:8080/message' \
+    'Content-Type:application/json'
+----

@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ echo '{"name":"some_name","message":"some_message"}' | http POST 'http://localhost:8080/message' \
+    'Content-Type:application/json' \
+    'Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmaXJzdF91c2VyIiwiZXhwIjoxNjM0MzUyMzI2LCJpYXQiOjE2MzQzNDg3MjZ9.hsC61Fn9pWJAkYzLjsB-Ksm73clYEEBzIYU1mS9ljUo'
+----
