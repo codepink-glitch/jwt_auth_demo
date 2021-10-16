@@ -82,8 +82,8 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">7</i>&nbsp;import org.springframework.web.bind.annotation.RequestBody;
 <i class="no-highlight">8</i>&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
 <i class="no-highlight">9</i>&nbsp;import org.springframework.web.bind.annotation.RestController;
-<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.models.AuthenticationRequest;
-<i class="no-highlight">11</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.models.AuthenticationResponse;
+<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.dtos.in.AuthenticationRequest;
+<i class="no-highlight">11</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.dtos.out.AuthenticationResponse;
 <i class="no-highlight">12</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.services.AuthenticationService;
 <i class="no-highlight">13</i>&nbsp;
 <i class="no-highlight">14</i>&nbsp;@RestController
@@ -93,8 +93,8 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">18</i>&nbsp;
 <i class="no-highlight">19</i>&nbsp;    private final AuthenticationService authenticationService;
 <i class="no-highlight">20</i>&nbsp;
-<i class="no-highlight">21</i>&nbsp;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ json пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
-<i class="no-highlight">22</i>&nbsp;    // пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">21</i>&nbsp;    // Эндпоинт для аутентификации пользователя, пользователь предоставляет json файл с именем пользователя и паролем.
+<i class="no-highlight">22</i>&nbsp;    // В ответ пользователь получает токен для последующей аутентификации.
 <i class="no-highlight">23</i>&nbsp;
 <i class="no-highlight">24</i>&nbsp;    @PostMapping
 <i class="no-highlight">25</i>&nbsp;    public ResponseEntity&lt;AuthenticationResponse&gt; createAuthToken(@RequestBody AuthenticationRequest authenticationRequest) {
@@ -127,7 +127,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-10-16 03:52</div>
+    <div style="float:right;">generated on 2021-10-16 12:34</div>
 </div>
 </body>
 </html>

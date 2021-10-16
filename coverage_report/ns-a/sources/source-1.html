@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > AuthenticationService</title>
+  <title>Coverage Report > MessageRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -17,53 +17,17 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">ru.codepinkglitch.jwt_auth_demo.services</a>
+    <a href="../index.html">ru.codepinkglitch.jwt_auth_demo.repositories</a>
 </div>
 
-<h1>Coverage Summary for Class: AuthenticationService (ru.codepinkglitch.jwt_auth_demo.services)</h1>
+<h1>Coverage Summary for Class: MessageRepository (ru.codepinkglitch.jwt_auth_demo.repositories)</h1>
 
 <table class="coverageStats">
 <tr>
   <th class="name">Class</th>
-<th class="coverageStat 
-">
-  Class, %
-</th>
-<th class="coverageStat 
-">
-  Method, %
-</th>
-<th class="coverageStat 
-">
-  Line, %
-</th>
 </tr>
 <tr>
-  <td class="name">AuthenticationService</td>
-<td class="coverageStat">
-  <span class="percent">
-    100%
-  </span>
-  <span class="absValue">
-    (1/1)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    100%
-  </span>
-  <span class="absValue">
-    (2/2)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    100%
-  </span>
-  <span class="absValue">
-    (9/9)
-  </span>
-</td>
+  <td class="name">MessageRepository</td>
 </tr>
 
 </table>
@@ -73,49 +37,27 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.jwt_auth_demo.services;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.jwt_auth_demo.repositories;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import lombok.RequiredArgsConstructor;
-<i class="no-highlight">4</i>&nbsp;import org.springframework.security.authentication.AuthenticationManager;
-<i class="no-highlight">5</i>&nbsp;import org.springframework.security.authentication.BadCredentialsException;
-<i class="no-highlight">6</i>&nbsp;import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-<i class="no-highlight">7</i>&nbsp;import org.springframework.stereotype.Service;
-<i class="no-highlight">8</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.entities.MyUserDetails;
-<i class="no-highlight">9</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.models.AuthenticationRequest;
-<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.models.AuthenticationResponse;
-<i class="no-highlight">11</i>&nbsp;
-<i class="no-highlight">12</i>&nbsp;// пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
-<i class="no-highlight">13</i>&nbsp;
-<i class="no-highlight">14</i>&nbsp;@Service
-<b class="fc"><i class="no-highlight">15</i>&nbsp;@RequiredArgsConstructor</b>
-<i class="no-highlight">16</i>&nbsp;public class AuthenticationService {
+<i class="no-highlight">3</i>&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+<i class="no-highlight">4</i>&nbsp;import org.springframework.data.jpa.repository.Query;
+<i class="no-highlight">5</i>&nbsp;import org.springframework.data.repository.query.Param;
+<i class="no-highlight">6</i>&nbsp;import org.springframework.stereotype.Repository;
+<i class="no-highlight">7</i>&nbsp;import ru.codepinkglitch.jwt_auth_demo.entities.MessageEntity;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;import java.util.List;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;//Класс-репозиторий для взаимодействия с базой данных.
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;@Repository
+<i class="no-highlight">14</i>&nbsp;public interface MessageRepository extends JpaRepository&lt;MessageEntity, Long&gt; {
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;    // Метод для получения последних n сообщений из базы данных.
 <i class="no-highlight">17</i>&nbsp;
-<i class="no-highlight">18</i>&nbsp;    private final AuthenticationManager authenticationManager;
-<i class="no-highlight">19</i>&nbsp;    private final MyUserDetailsService userDetailsService;
-<i class="no-highlight">20</i>&nbsp;    private final JwtUtilService jwtUtilService;
-<i class="no-highlight">21</i>&nbsp;
-<i class="no-highlight">22</i>&nbsp;
-<i class="no-highlight">23</i>&nbsp;    public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
-<i class="no-highlight">24</i>&nbsp;
-<i class="no-highlight">25</i>&nbsp;        // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ AuthenticationManager пїЅпїЅ Spring Security пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
-<i class="no-highlight">26</i>&nbsp;        // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
-<i class="no-highlight">27</i>&nbsp;
-<i class="no-highlight">28</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">29</i>&nbsp;            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(</b>
-<b class="fc"><i class="no-highlight">30</i>&nbsp;                    authenticationRequest.getUsername(), authenticationRequest.getPassword())</b>
-<i class="no-highlight">31</i>&nbsp;            );
-<b class="fc"><i class="no-highlight">32</i>&nbsp;        } catch (BadCredentialsException e) {</b>
-<b class="fc"><i class="no-highlight">33</i>&nbsp;            throw new RuntimeException(&quot;Wrong username or password.&quot;);</b>
-<b class="fc"><i class="no-highlight">34</i>&nbsp;        }</b>
-<i class="no-highlight">35</i>&nbsp;
-<i class="no-highlight">36</i>&nbsp;        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ AuthenticationResponse.
-<i class="no-highlight">37</i>&nbsp;        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ json пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
-<i class="no-highlight">38</i>&nbsp;
-<b class="fc"><i class="no-highlight">39</i>&nbsp;        MyUserDetails authUser = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());</b>
-<b class="fc"><i class="no-highlight">40</i>&nbsp;        String token = jwtUtilService.generateToken(authUser);</b>
-<b class="fc"><i class="no-highlight">41</i>&nbsp;        return new AuthenticationResponse(token);</b>
-<i class="no-highlight">42</i>&nbsp;    }
-<i class="no-highlight">43</i>&nbsp;}
+<i class="no-highlight">18</i>&nbsp;    @Query(nativeQuery = true,
+<i class="no-highlight">19</i>&nbsp;            value = &quot;SELECT * FROM MESSAGE ORDER BY CREATED_AT DESC FETCH FIRST :num ROWS ONLY&quot;)
+<i class="no-highlight">20</i>&nbsp;    List&lt;MessageEntity&gt; findLastMessagesByCreatedAt(@Param(&quot;num&quot;) Integer numOfLastMessages);
+<i class="no-highlight">21</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -142,7 +84,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-10-16 03:52</div>
+    <div style="float:right;">generated on 2021-10-16 12:34</div>
 </div>
 </body>
 </html>

@@ -50,12 +50,12 @@ Current scope:     <a href="../../index.html">all classes</a>
     100%
   </span>
   <span class="absValue">
-    (9/9)
+    (13/13)
   </span>
 </td>
 </tr>
   <tr>
-    <td class="name">MyUserDetails$HibernateProxy$kwUaKTAD</td>
+    <td class="name">MyUserDetails$HibernateProxy$xG8pmaAu</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -72,7 +72,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     100%
   </span>
   <span class="absValue">
-    (9/9)
+    (13/13)
   </span>
 </td>
 </tr>
@@ -91,7 +91,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">6</i>&nbsp;import javax.persistence.*;
 <i class="no-highlight">7</i>&nbsp;import java.util.List;
 <i class="no-highlight">8</i>&nbsp;
-<i class="no-highlight">9</i>&nbsp;// пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+<i class="no-highlight">9</i>&nbsp;// Класс, отображающий сущность пользователя в базе данных.
 <i class="no-highlight">10</i>&nbsp;
 <i class="no-highlight">11</i>&nbsp;@Entity
 <b class="fc"><i class="no-highlight">12</i>&nbsp;@Data</b>
@@ -112,17 +112,17 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">27</i>&nbsp;    @Column(name = &quot;PASSWORD&quot;, nullable = false)
 <b class="fc"><i class="no-highlight">28</i>&nbsp;    private String password;</b>
 <i class="no-highlight">29</i>&nbsp;
-<i class="no-highlight">30</i>&nbsp;    @Column(name = &quot;NON_EXPIRED&quot;)
-<b class="fc"><i class="no-highlight">31</i>&nbsp;    private boolean accountNonExpired;</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;    @Column(name = &quot;NON_EXPIRED&quot;)</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;    private boolean accountNonExpired = true;</b>
 <i class="no-highlight">32</i>&nbsp;
-<i class="no-highlight">33</i>&nbsp;    @Column(name = &quot;NON_LOCKED&quot;)
-<b class="fc"><i class="no-highlight">34</i>&nbsp;    private boolean accountNonLocked;</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;    @Column(name = &quot;NON_LOCKED&quot;)</b>
+<b class="fc"><i class="no-highlight">34</i>&nbsp;    private boolean accountNonLocked = true;</b>
 <i class="no-highlight">35</i>&nbsp;
-<i class="no-highlight">36</i>&nbsp;    @Column(name = &quot;CREDENTIALS_NON_EXPIRED&quot;)
-<b class="fc"><i class="no-highlight">37</i>&nbsp;    private boolean credentialsNonExpired;</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;    @Column(name = &quot;CREDENTIALS_NON_EXPIRED&quot;)</b>
+<b class="fc"><i class="no-highlight">37</i>&nbsp;    private boolean credentialsNonExpired = true;</b>
 <i class="no-highlight">38</i>&nbsp;
-<i class="no-highlight">39</i>&nbsp;    @Column(name = &quot;ENABLED&quot;)
-<b class="fc"><i class="no-highlight">40</i>&nbsp;    private boolean enabled;</b>
+<b class="fc"><i class="no-highlight">39</i>&nbsp;    @Column(name = &quot;ENABLED&quot;)</b>
+<b class="fc"><i class="no-highlight">40</i>&nbsp;    private boolean enabled = true;</b>
 <i class="no-highlight">41</i>&nbsp;}
 </div>
 </pre>
@@ -150,7 +150,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-10-16 03:52</div>
+    <div style="float:right;">generated on 2021-10-16 12:34</div>
 </div>
 </body>
 </html>
