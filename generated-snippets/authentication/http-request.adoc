@@ -1,9 +1,0 @@
-[source,http,options="nowrap"]
-----
-POST /authentication HTTP/1.1
-Content-Type: application/json
-Content-Length: 48
-Host: localhost:8080
-
-{"username":"first_user","password":"password1"}
-----
