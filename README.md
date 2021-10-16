@@ -50,7 +50,7 @@ Content-Length: 36
 {"id":4,"username":"randomUsername"}
 ```
 
-* Создание токена (/authentication):
+* __Создание токена (/authentication):__
 
 [Примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/authentication)
 
@@ -95,8 +95,8 @@ Content-Length: 149
 {"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmaXJzdF91c2VyIiwiZXhwIjoxNjM0MzUyMzI2LCJpYXQiOjE2MzQzNDg3MjZ9.hsC61Fn9pWJAkYzLjsB-Ksm73clYEEBzIYU1mS9ljUo"}
 ```
 
-* Получение и обработка сообщений (/message):
-* 
+* __Получение и обработка сообщений (/message):__
+
 [Примеры запросов и ответов, попадающих под паттерн](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message%20(requesting%20history))
 
 [Примеры запросов и ответов, не попадающих под паттерн](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message)
