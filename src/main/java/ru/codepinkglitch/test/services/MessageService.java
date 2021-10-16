@@ -6,13 +6,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.codepinkglitch.test.dtos.in.MessageIn;
 import ru.codepinkglitch.test.dtos.out.MessageOut;
-import ru.codepinkglitch.test.entities.MessageEntity;
+import ru.codepinkglitch.test.entities.Message;
 import ru.codepinkglitch.test.repositories.MessageRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-// Класс, принимающий и обрабатывающий сообщения.
+// Класс-сервис, взаимодействующий с контроллером, принимающим сообщения.
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +27,7 @@ public class MessageService {
     // Сохранение сообщения, возвращает зарегистрированное сообщение.
 
     private MessageOut receiveMessage(MessageIn messageIn) {
-        MessageEntity saved = messageRepository.save(objectMapper.convertValue(messageIn, MessageEntity.class));
+        Message saved = messageRepository.save(objectMapper.convertValue(messageIn, Message.class));
         return objectMapper.convertValue(saved, MessageOut.class);
     }
 

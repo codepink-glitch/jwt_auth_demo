@@ -28,14 +28,14 @@ public class MyUserDetails implements UserDetails {
     private String password;
 
     @Column(name = "NON_EXPIRED")
-    private boolean accountNonExpired = true;
+    private boolean accountNonExpired;
 
     @Column(name = "NON_LOCKED")
-    private boolean accountNonLocked = true;
+    private boolean accountNonLocked;
 
     @Column(name = "CREDENTIALS_NON_EXPIRED")
-    private boolean credentialsNonExpired = true;
+    private boolean credentialsNonExpired;
 
     @Column(name = "ENABLED")
-    private boolean enabled = true;
+    private boolean enabled;
 }
