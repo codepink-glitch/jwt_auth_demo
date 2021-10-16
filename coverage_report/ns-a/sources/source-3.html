@@ -1,0 +1,166 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MessageService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">ru.codepinkglitch.test.services</a>
+</div>
+
+<h1>Coverage Summary for Class: MessageService (ru.codepinkglitch.test.services)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MessageService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    86,7%
+  </span>
+  <span class="absValue">
+    (13/15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package ru.codepinkglitch.test.services;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.fasterxml.jackson.core.JsonProcessingException;
+<i class="no-highlight">4</i>&nbsp;import com.fasterxml.jackson.databind.ObjectMapper;
+<i class="no-highlight">5</i>&nbsp;import lombok.RequiredArgsConstructor;
+<i class="no-highlight">6</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">7</i>&nbsp;import ru.codepinkglitch.test.dtos.in.MessageIn;
+<i class="no-highlight">8</i>&nbsp;import ru.codepinkglitch.test.dtos.out.MessageOut;
+<i class="no-highlight">9</i>&nbsp;import ru.codepinkglitch.test.entities.Message;
+<i class="no-highlight">10</i>&nbsp;import ru.codepinkglitch.test.repositories.MessageRepository;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;import java.util.List;
+<i class="no-highlight">13</i>&nbsp;import java.util.stream.Collectors;
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;// Класс-сервис, взаимодействующий с контроллером, принимающим сообщения.
+<i class="no-highlight">16</i>&nbsp;
+<i class="no-highlight">17</i>&nbsp;@Service
+<b class="fc"><i class="no-highlight">18</i>&nbsp;@RequiredArgsConstructor</b>
+<i class="no-highlight">19</i>&nbsp;public class MessageService {
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    private static final String HISTORY_PREFIX = &quot;history&quot;;
+<b class="fc"><i class="no-highlight">22</i>&nbsp;    private static final Integer HISTORY_MAX_NUMS = 3;</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;    private static final String HISTORY_MAX_NUMS_REGEX = &quot;\\d{1,&quot; + HISTORY_MAX_NUMS + &quot;}&quot;;</b>
+<i class="no-highlight">24</i>&nbsp;    private final MessageRepository messageRepository;
+<i class="no-highlight">25</i>&nbsp;    private final ObjectMapper objectMapper;
+<i class="no-highlight">26</i>&nbsp;
+<i class="no-highlight">27</i>&nbsp;    // Сохранение сообщения, возвращает зарегистрированное сообщение.
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;    private MessageOut receiveMessage(MessageIn messageIn) {
+<b class="fc"><i class="no-highlight">30</i>&nbsp;        Message saved = messageRepository.save(objectMapper.convertValue(messageIn, Message.class));</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        return objectMapper.convertValue(saved, MessageOut.class);</b>
+<i class="no-highlight">32</i>&nbsp;    }
+<i class="no-highlight">33</i>&nbsp;
+<i class="no-highlight">34</i>&nbsp;    // Получение из базы данных последних n сообщений и возврат их в контроллер.
+<i class="no-highlight">35</i>&nbsp;
+<i class="no-highlight">36</i>&nbsp;    private List&lt;MessageOut&gt; findLastFew(MessageIn messageIn) {
+<b class="fc"><i class="no-highlight">37</i>&nbsp;        int numOfMessages = Integer.parseInt(messageIn.getMessage().replaceAll(&quot;\\D+&quot;, &quot;&quot;));</b>
+<i class="no-highlight">38</i>&nbsp;
+<b class="fc"><i class="no-highlight">39</i>&nbsp;        return messageRepository.findLastMessagesByCreatedAt(numOfMessages).stream()</b>
+<b class="fc"><i class="no-highlight">40</i>&nbsp;                .map(x -&gt; objectMapper.convertValue(x, MessageOut.class))</b>
+<b class="fc"><i class="no-highlight">41</i>&nbsp;                .collect(Collectors.toList());</b>
+<i class="no-highlight">42</i>&nbsp;    }
+<i class="no-highlight">43</i>&nbsp;
+<i class="no-highlight">44</i>&nbsp;    // Данный метод взаимодействует с контроллером.
+<i class="no-highlight">45</i>&nbsp;    // Полученное сообщение проверяется на формат: сообщение или запрос последних n сообщений.
+<i class="no-highlight">46</i>&nbsp;    // В случае сообщения, метод возвращает в контроллер сериализованное в json зарегистрированное сообщение.
+<i class="no-highlight">47</i>&nbsp;    // В случае запроса последних n сообщений, метод возвращает в контроллер сериализованный в json список последних n сообщений.
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;    public String processMessage(MessageIn messageIn) {
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        String[] split = messageIn.getMessage().split(&quot; &quot;);</b>
+<i class="no-highlight">51</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">52</i>&nbsp;            return objectMapper.writeValueAsString(</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;                    split.length == 2 &amp;&amp; split[0].equalsIgnoreCase(HISTORY_PREFIX) &amp;&amp; split[1].matches(HISTORY_MAX_NUMS_REGEX) ?</b>
+<b class="fc"><i class="no-highlight">54</i>&nbsp;                            findLastFew(messageIn) : receiveMessage(messageIn)</b>
+<i class="no-highlight">55</i>&nbsp;            );
+<b class="nc"><i class="no-highlight">56</i>&nbsp;        } catch (JsonProcessingException e) {</b>
+<b class="nc"><i class="no-highlight">57</i>&nbsp;            throw new RuntimeException(&quot;Error parsing message.&quot;);</b>
+<i class="no-highlight">58</i>&nbsp;        }
+<i class="no-highlight">59</i>&nbsp;    }
+<i class="no-highlight">60</i>&nbsp;
+<i class="no-highlight">61</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-10-16 03:52</div>
+</div>
+</body>
+</html>
