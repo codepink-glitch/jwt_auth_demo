@@ -94,7 +94,7 @@ Content-Length: 149
 {"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmaXJzdF91c2VyIiwiZXhwIjoxNjM0MzUyMzI2LCJpYXQiOjE2MzQzNDg3MjZ9.hsC61Fn9pWJAkYzLjsB-Ksm73clYEEBzIYU1mS9ljUo"}
 ```
 
-* Получение и обработка сообщений (/message)
+* Получение и обработка сообщений (/message):
 [Примеры запросов и ответов с regex](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message%20(requesting%20history))
 [Примеры запросов и ответов без regex](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message)
 
