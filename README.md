@@ -6,16 +6,17 @@
 
 * Регистрация пользователя (/registration):
 
-[примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/registration)
+[Примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/registration)
 
 Эндпоинт получает данные в виде json файла: 
-
+```
 {
     name: "String",
     password: "String"
 }
+```
 
-пример: 
+Пример: 
 ```
 POST /registration HTTP/1.1
 Content-Type: application/json
@@ -48,6 +49,7 @@ Content-Length: 36
 ```
 
 * Создание токена (/authentication):
+[Примеры запросов и ответов](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/authentication)
 
 Эндпоинт получает данные в виде json файла:
 
@@ -56,7 +58,15 @@ Content-Length: 36
     password: "String" 
 }
 
-[пример запроса](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/generated-snippets/authentication/http-request.adoc)
+Пример:
+```
+POST /authentication HTTP/1.1
+Content-Type: application/json
+Content-Length: 48
+Host: localhost:8080
+
+{"username":"first_user","password":"password1"}
+```
 
 Проверяет данные по базе данных и в случае существования данного пользователя и правильно указанного пароля возвращает json файл с токеном вида:
 
@@ -64,9 +74,23 @@ Content-Length: 36
     token: "String" 
 }
 
-[пример ответа](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/generated-snippets/authentication/http-response.adoc)
+пример:
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Content-Length: 149
+
+{"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmaXJzdF91c2VyIiwiZXhwIjoxNjM0MzUyMzI2LCJpYXQiOjE2MzQzNDg3MjZ9.hsC61Fn9pWJAkYzLjsB-Ksm73clYEEBzIYU1mS9ljUo"}
+```
 
 * Получение и обработка сообщений (/message)
+[Примеры запросов и ответов с regex](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message%20(requesting%20history))
+[Примеры запросов и ответов без regex](https://github.com/codepink-glitch/jwt_auth_demo/tree/master/generated-snippets/message)
 
 Эндпоинт получает данные в виде json файла, в заголовке должен быть указан токен для аутентификации, в случае, если токен не указан/неверный/срок действия истек,
 возвращается страница со статусом 403.
@@ -80,7 +104,17 @@ Content-Length: 36
 }
 
 
-[пример запроса с regex](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/generated-snippets/message%20(requesting%20history)/http-request.adoc)
+Пример сообщения с regex:
+
+``` 
+POST /message HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmaXJzdF91c2VyIiwiZXhwIjoxNjM0MzUyMzI2LCJpYXQiOjE2MzQzNDg3MjZ9.hsC61Fn9pWJAkYzLjsB-Ksm73clYEEBzIYU1mS9ljUo
+Content-Length: 43
+Host: localhost:8080
+
+{"name":"some_name","message":"history 10"}
+```
 
 В ответ возвращает список последних n сообщений из бд:
 
@@ -92,9 +126,34 @@ Content-Length: 36
    }
 ]
 
-[пример ответа с regex](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/generated-snippets/message%20(requesting%20history)/http-response.adoc)
+Пример ответа с regex:
 
-Сообщение, не попадающее под regex. [пример запроса](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/generated-snippets/message/http-request.adoc)
+```
+HTTP/1.1 200 OK
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 384
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+
+[{"id":7,"name":"user7","message":"7"},{"id":6,"name":"user6","message":"6"},{"id":10,"name":"user10","message":"10"},{"id":9,"name":"user9","message":"9"},{"id":8,"name":"user8","message":"8"},{"id":1,"name":"user1","message":"1"},{"id":5,"name":"user5","message":"5"},{"id":4,"name":"user4","message":"4"},{"id":2,"name":"user2","message":"2"},{"id":3,"name":"user3","message":"3"}]
+```
+
+Сообщение, не попадающее под regex. 
+
+Пример:
+
+```
+POST /message HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmaXJzdF91c2VyIiwiZXhwIjoxNjM0MzUyMzI2LCJpYXQiOjE2MzQzNDg3MjZ9.hsC61Fn9pWJAkYzLjsB-Ksm73clYEEBzIYU1mS9ljUo
+Content-Length: 45
+Host: localhost:8080
+
+{"name":"some_name","message":"some_message"}
+```
 
 Система возвращает зарегистрированное сообщение вида:
 
@@ -104,5 +163,18 @@ Content-Length: 36
    message: "String"
 }
 
-[пример ответа](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/generated-snippets/message/http-response.adoc)
+Пример:
+
+```
+HTTP/1.1 200 OK
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 53
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+
+{"id":11,"name":"some_name","message":"some_message"}
+```
 
