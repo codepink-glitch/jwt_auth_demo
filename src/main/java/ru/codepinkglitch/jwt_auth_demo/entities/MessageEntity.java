@@ -21,8 +21,13 @@ public class MessageEntity {
     @Column(name = "MESSAGE_ID")
     private Long id;
 
-    @Column(name = "MESSAGE_NAME", nullable = false)
-    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME")
+//    @JoinTable(name = "USER_DETAILS_MESSAGE",
+//            joinColumns = {@JoinColumn(name = "USERNAME")},
+//            inverseJoinColumns = {@JoinColumn(name = "MESSAGE_ID")})
+    private MyUserDetails myUserDetails;
 
     @Column(name = "MESSAGE_CONTENT", nullable = false)
     private String message;

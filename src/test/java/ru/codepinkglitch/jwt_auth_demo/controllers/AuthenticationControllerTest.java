@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@Sql({"classpath:test_schema.sql", "classpath:test_data.sql"})
+@Sql({"classpath:schema.sql", "classpath:test_data.sql"})
 public class AuthenticationControllerTest {
 
     private static final String URI = "/authentication";

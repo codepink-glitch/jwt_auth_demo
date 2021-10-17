@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@Sql({"classpath:test_schema.sql", "classpath:test_data.sql", "classpath:test_data_messages.sql"})
+@Sql({"classpath:schema.sql", "classpath:test_data.sql", "classpath:test_data_messages.sql"})
 public class MessageControllerTest {
 
     private static final String URI = "/message";
@@ -77,7 +77,7 @@ public class MessageControllerTest {
     @Test
     public void sendMessageTest() throws Exception {
         MessageIn messageIn = new MessageIn();
-        String messageName = "some_name";
+        String messageName = testUserUsername;
         String message = "some_message";
         messageIn.setName(messageName);
         messageIn.setMessage(message);
@@ -96,7 +96,7 @@ public class MessageControllerTest {
     @Test
     public void getHistoryTest() throws Exception {
         MessageIn messageIn = new MessageIn();
-        messageIn.setName("some_name");
+        messageIn.setName(testUserUsername);
         Integer numOfMessages = 10;
         messageIn.setMessage("history " + numOfMessages);
 
