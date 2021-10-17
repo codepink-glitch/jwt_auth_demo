@@ -24,9 +24,6 @@ public class MessageEntity {
 
     @ManyToOne
     @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME")
-//    @JoinTable(name = "USER_DETAILS_MESSAGE",
-//            joinColumns = {@JoinColumn(name = "USERNAME")},
-//            inverseJoinColumns = {@JoinColumn(name = "MESSAGE_ID")})
     private MyUserDetails myUserDetails;
 
     @Column(name = "MESSAGE_CONTENT", nullable = false)
