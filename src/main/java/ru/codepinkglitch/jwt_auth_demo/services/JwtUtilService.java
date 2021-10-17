@@ -58,7 +58,7 @@ public class JwtUtilService {
         return Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
     }
 
-    // Извлечение конкретного параметра, записанных в токен.
+    // Извлечение конкретного параметра, записанного в токен.
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);

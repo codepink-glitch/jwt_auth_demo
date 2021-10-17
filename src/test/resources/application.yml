@@ -13,6 +13,7 @@ spring:
       enabled: false
       path: /h2-console
 
+
 tests_variables:
   test_username: first_user
   test_password: password1

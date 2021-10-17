@@ -3,11 +3,15 @@ package ru.codepinkglitch.jwt_auth_demo.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.codepinkglitch.jwt_auth_demo.dtos.in.MessageIn;
 import ru.codepinkglitch.jwt_auth_demo.dtos.out.MessageOut;
 import ru.codepinkglitch.jwt_auth_demo.entities.MessageEntity;
+import ru.codepinkglitch.jwt_auth_demo.entities.MyUserDetails;
 import ru.codepinkglitch.jwt_auth_demo.repositories.MessageRepository;
+import ru.codepinkglitch.jwt_auth_demo.repositories.UserDetailsRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,22 +26,29 @@ public class MessageService {
     private static final Integer HISTORY_MAX_NUMS = 3;
     private static final String HISTORY_MAX_NUMS_REGEX = "\\d{1," + HISTORY_MAX_NUMS + "}";
     private final MessageRepository messageRepository;
+    private final UserDetailsRepository userDetailsRepository;
     private final ObjectMapper objectMapper;
+    private final JwtUtilService jwtUtilService;
 
-    // Сохранение сообщения, возвращает зарегистрированное сообщение.
+    // Так как сущность сообщения содержит в себе сущность пользователя, вытаскиваем пользователя из бд по имени и привязываем к сообщению.
+    // Затем сохраняем сущность сообщения.
 
     private MessageOut receiveMessage(MessageIn messageIn) {
-        MessageEntity saved = messageRepository.save(objectMapper.convertValue(messageIn, MessageEntity.class));
-        return objectMapper.convertValue(saved, MessageOut.class);
+        MessageEntity messageEntity = new MessageEntity();
+        messageEntity.setMessage(messageIn.getMessage());
+        MyUserDetails messageSender = userDetailsRepository.findMyUserDetailsByUsername(messageIn.getName());
+        messageEntity.setMyUserDetails(messageSender);
+        MessageEntity saved = messageRepository.save(messageEntity);
+        return convertValueFromEntityToDto(saved);
     }
 
     // Получение из базы данных последних n сообщений и возврат их в контроллер.
 
     private List<MessageOut> findLastFew(MessageIn messageIn) {
         int numOfMessages = Integer.parseInt(messageIn.getMessage().replaceAll("\\D+", ""));
-
-        return messageRepository.findLastMessagesByCreatedAt(numOfMessages).stream()
-                .map(x -> objectMapper.convertValue(x, MessageOut.class))
+        Pageable pageable = PageRequest.of(0, numOfMessages);
+        return messageRepository.findLastMessagesByCreatedAt(pageable).stream()
+                .map(this::convertValueFromEntityToDto)
                 .collect(Collectors.toList());
     }
 
@@ -46,7 +57,8 @@ public class MessageService {
     // В случае сообщения, метод возвращает в контроллер сериализованное в json зарегистрированное сообщение.
     // В случае запроса последних n сообщений, метод возвращает в контроллер сериализованный в json список последних n сообщений.
 
-    public String processMessage(MessageIn messageIn) {
+    public String processMessage(MessageIn messageIn, String token) {
+        checkUser(messageIn, token);
         String[] split = messageIn.getMessage().split(" ");
         try {
             return objectMapper.writeValueAsString(
@@ -56,6 +68,26 @@ public class MessageService {
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Error parsing message.");
         }
+    }
+
+    // Метод для проверки совпадения имени пользователя из сообщения и из токена.
+    // В случае несовпадения выбрасывает ошибку и контроллер возвращает страницу с 403 кодом.
+
+    private void checkUser(MessageIn messageIn, String token){
+        if(!jwtUtilService.extractUsername(token.substring(6)).equals(messageIn.getName())){
+            throw new RuntimeException("Name don't matches.");
+        }
+    }
+
+    // Метод для конвертации из класса сущности в класс для передачи данных пользователю.
+    // Отдельный класс для конвертации не стал делать, в данном приложении всего 1 метод для конвертации.
+
+    private MessageOut convertValueFromEntityToDto(MessageEntity messageEntity){
+        MessageOut messageOut = new MessageOut();
+        messageOut.setMessage(messageEntity.getMessage());
+        messageOut.setId(messageEntity.getId());
+        messageOut.setName(messageEntity.getMyUserDetails().getUsername());
+        return messageOut;
     }
 
 }

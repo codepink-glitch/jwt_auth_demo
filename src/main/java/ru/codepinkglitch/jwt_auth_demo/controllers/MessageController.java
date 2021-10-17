@@ -3,10 +3,7 @@ package ru.codepinkglitch.jwt_auth_demo.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.codepinkglitch.jwt_auth_demo.dtos.in.MessageIn;
 import ru.codepinkglitch.jwt_auth_demo.services.MessageService;
 
@@ -25,7 +22,7 @@ public class MessageController {
     // В случае, если сообщение имеет вид: history n:Integer, система возвращает пользователю список последних n сообщений, зарегестрированных в системе.
 
     @PostMapping
-    public ResponseEntity<String> processMessage(@RequestBody MessageIn messageIn) {
-        return new ResponseEntity<>(messageService.processMessage(messageIn), HttpStatus.OK);
+    public ResponseEntity<String> processMessage(@RequestBody MessageIn messageIn, @RequestHeader(name = "Authorization") String token) {
+        return new ResponseEntity<>(messageService.processMessage(messageIn, token), HttpStatus.OK);
     }
 }
