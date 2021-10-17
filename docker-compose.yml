@@ -11,9 +11,9 @@ services:
       - 5432:5432
 
     environment:
-      - POSTGRES_DB=jwt_auth_demo_DB
+      - POSTGRES_DB=postgres_db
       - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=Qwerty123
+      - POSTGRES_PASSWORD=password
 
 
 
@@ -21,6 +21,12 @@ services:
 
     build: .
     container_name: app-spring
+
+    environment:
+      - DB_SERVER=app-postgres
+      - POSTGRES_DB=postgres_db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
 
     ports:
       - 8080:8080

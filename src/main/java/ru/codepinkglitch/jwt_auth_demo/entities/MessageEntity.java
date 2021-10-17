@@ -21,7 +21,6 @@ public class MessageEntity {
     @Column(name = "MESSAGE_ID")
     private Long id;
 
-
     @ManyToOne
     @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME")
     private MyUserDetails myUserDetails;

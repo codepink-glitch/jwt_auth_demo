@@ -30,7 +30,8 @@ public class MessageService {
     private final ObjectMapper objectMapper;
     private final JwtUtilService jwtUtilService;
 
-    // Сохранение сообщения в бд, возвращает зарегистрированное сообщение.
+    // Так как сущность сообщения содержит в себе сущность пользователя, вытаскиваем пользователя из бд по имени и привязываем к сообщению.
+    // Затем сохраняем сущность сообщения.
 
     private MessageOut receiveMessage(MessageIn messageIn) {
         MessageEntity messageEntity = new MessageEntity();
@@ -69,11 +70,17 @@ public class MessageService {
         }
     }
 
+    // Метод для проверки совпадения имени пользователя из сообщения и из токена.
+    // В случае несовпадения выбрасывает ошибку и контроллер возвращает страницу с 403 кодом.
+
     private void checkUser(MessageIn messageIn, String token){
         if(!jwtUtilService.extractUsername(token.substring(6)).equals(messageIn.getName())){
             throw new RuntimeException("Name don't matches.");
         }
     }
+
+    // Метод для конвертации из класса сущности в класс для передачи данных пользователю.
+    // Отдельный класс для конвертации не стал делать, в данном приложении всего 1 метод для конвертации.
 
     private MessageOut convertValueFromEntityToDto(MessageEntity messageEntity){
         MessageOut messageOut = new MessageOut();
