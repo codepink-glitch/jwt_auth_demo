@@ -218,7 +218,7 @@ Expires: 0
 
 * __Docker:__
 
-Возможен вариант вообще без использования проекта, исключительно docker-compose файл: [docker-compose.yml](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/%23docker-compose(through%20fetch).yml).
+Возможен вариант вообще без использования проекта, исключительно docker-compose файл: [docker-compose.yml для запуска без проекта](https://github.com/codepink-glitch/jwt_auth_demo/blob/master/%23docker-compose(through%20fetch).yml).
 В любом случае:
 ```
 docker-compose up
