@@ -216,7 +216,7 @@ Expires: 0
 mvn test
 
 Запуск отдельных тестов: 
-mvn -Dtest=[имя класса] test пример: mvn -Dtest=RegisterControllerTest test
+mvn -Dtest=[имя класса] test. Пример: mvn -Dtest=RegisterControllerTest test
 
 
 
