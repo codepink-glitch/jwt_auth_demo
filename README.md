@@ -212,6 +212,8 @@ Expires: 0
 
 ## Покрытие тестами: 
 
+Запуск тестовых классов может может производиться в любом порядке, перед запуском каждого класса автоматически удаляются и создаются заново таблицы в базе данных и записи в них.
+
 ![code_coverage](https://raw.githubusercontent.com/codepink-glitch/jwt_auth_demo/master/coverage_report/code_coverage.jpg)
 
 ## Развертывание: 
